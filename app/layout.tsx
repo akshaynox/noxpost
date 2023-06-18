@@ -1,8 +1,8 @@
 import "./globals.css";
-import { Inter, Roboto } from "next/font/google";
+import { Roboto } from "next/font/google";
 import Nav from "./auth/Nav";
+import QueryWrapper from "./auth/QueryWrapper";
 
-const inter = Inter({ subsets: ["latin"] });
 const roboto = Roboto({
   subsets: ["latin"],
   weight: ["400", "700"],
@@ -21,9 +21,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`mx-4 md:max-48 xl:mx-96 ${roboto.variable}`}>
-        <Nav />
-        {children}
+      <body
+        className={`mx-4 md:max-48 xl:mx-96 ${roboto.variable} font-sans bg-gray-200`}
+        suppressHydrationWarning={true}
+      >
+        <QueryWrapper>
+          <Nav />
+          {children}
+        </QueryWrapper>
       </body>
     </html>
   );
