@@ -8,9 +8,21 @@ interface PostProps {
   avatar: string;
   name: string;
   postTitle: string;
+  comments: {
+    createdAt: string;
+    id: string;
+    postId: string;
+    userId: string;
+  }[];
 }
 
-export default function Post({ id, avatar, name, postTitle }: PostProps) {
+export default function Post({
+  id,
+  avatar,
+  name,
+  postTitle,
+  comments,
+}: PostProps) {
   return (
     <div className="bg-white my-8 p-8 rounded-lg">
       <div className="flex items-center gap-2">
@@ -28,7 +40,9 @@ export default function Post({ id, avatar, name, postTitle }: PostProps) {
       </div>
       <div className="flex gap-4 cursor-pointer items-center">
         <Link href={`/post/${id}`}>
-          <p className="text-sm font-bold text-gray-700">Comments</p>
+          <p className="text-sm font-bold text-gray-700">
+            {comments?.length} Comments
+          </p>
         </Link>
       </div>
     </div>
